@@ -9,9 +9,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.qs.enviamelo</groupId>
-	<artifactId>cuenta</artifactId>
+	<artifactId>usuarios</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>cuenta</name>
+	<name>usuario</name>
 	<description>Microservicios de cuentas de usuario</description>
 
 	<properties>

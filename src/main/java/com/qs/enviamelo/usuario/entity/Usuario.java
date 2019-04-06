@@ -1,4 +1,4 @@
-package com.qs.enviamelo.cuenta.entity.interfaces.impl;
+package com.qs.enviamelo.usuario.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
