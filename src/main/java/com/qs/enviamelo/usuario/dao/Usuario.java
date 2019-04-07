@@ -1,12 +1,15 @@
 package com.qs.enviamelo.usuario.dao;
 
+import java.io.Serializable;
+
 import javax.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "usuario")
-public class Usuario {
+public class Usuario implements Serializable{
 
+	private static final long serialVersionUID = 3098128811207031875L;
 	@Id
 	@NotNull
 	private Long id;
