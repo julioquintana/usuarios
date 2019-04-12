@@ -1,40 +1,25 @@
-package com.qs.enviamelo.usuario.dao;
-
-import java.io.Serializable;
+package com.qs.telotengo.usuario.dto;
 
 import javax.validation.constraints.NotNull;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "usuario")
-public class Usuario implements Serializable{
 
-	private static final long serialVersionUID = 3098128811207031875L;
-	@Id
+public class UsuarioRequest {
+	Long id;
 	@NotNull
-	private Long id;
-	private String rut;
-	private String nombre;
-	private String correo;
-	private String telefono;
-	private String clave;
-	private String pais;
-	private String direccion;
-	private boolean estado;
+	String rut;
+	@NotNull
+	String nombre;
+	@NotNull
+	String correo;
+	@NotNull
+	String telefono;
+	String clave;
+	@NotNull
+	String pais;
+	@NotNull
+	String direccion;
+	boolean estado;
 
-	public Usuario(Long id, String rut, String nombre, String correo, String telefono, String clave, String pais,
-			String direccion, boolean estado) {
-		super();
-		this.id = id;
-		this.rut = rut;
-		this.nombre = nombre;
-		this.correo = correo;
-		this.telefono = telefono;
-		this.clave = clave;
-		this.pais = pais;
-		this.direccion = direccion;
-		this.estado = estado;
-	}
 
 	public Long getId() {
 		return id;
@@ -76,14 +61,6 @@ public class Usuario implements Serializable{
 		this.telefono = telefono;
 	}
 
-	public String getClave() {
-		return clave;
-	}
-
-	public void setClave(String clave) {
-		this.clave = clave;
-	}
-
 	public String getPais() {
 		return pais;
 	}
@@ -100,6 +77,14 @@ public class Usuario implements Serializable{
 		this.direccion = direccion;
 	}
 
+	public String getClave() {
+		return clave;
+	}
+
+	public void setClave(String clave) {
+		this.clave = clave;
+	}
+
 	public boolean isEstado() {
 		return estado;
 	}
@@ -110,7 +95,7 @@ public class Usuario implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Usuario [id=" + id + ", rut=" + rut + ", nombre=" + nombre + ", correo=" + correo + ", telefono="
+		return "UsuarioRequest [id=" + id + ", rut=" + rut + ", nombre=" + nombre + ", correo=" + correo + ", telefono="
 				+ telefono + ", clave=" + clave + ", pais=" + pais + ", direccion=" + direccion + ", estado=" + estado
 				+ "]";
 	}

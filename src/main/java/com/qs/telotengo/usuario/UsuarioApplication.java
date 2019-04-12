@@ -1,4 +1,4 @@
-package com.qs.enviamelo.usuario;
+package com.qs.telotengo.usuario;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
