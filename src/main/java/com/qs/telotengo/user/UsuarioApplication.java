@@ -1,4 +1,4 @@
-package com.qs.telotengo.usuario;
+package com.qs.telotengo.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
