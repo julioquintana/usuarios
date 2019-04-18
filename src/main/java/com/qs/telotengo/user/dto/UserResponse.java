@@ -1,10 +1,9 @@
 package com.qs.telotengo.user.dto;
-
 import com.qs.telotengo.user.dao.User;
 
 public class UserResponse {
-
-	Long id;
+	
+	String id;
 	String rut;
 	String name;
 	String mail;
@@ -13,11 +12,11 @@ public class UserResponse {
 	String address;
 	boolean status;
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

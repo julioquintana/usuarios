@@ -2,25 +2,30 @@ package com.qs.telotengo.user.dao;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.validation.constraints.NotNull;
-import javax.persistence.Id;
 
-@Entity
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.validation.constraints.Email;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.qs.telotengo.user.dto.util.Phone;
+
+
+
+@Document
 public class User implements Serializable{
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
+	private static final long serialVersionUID = 40L;
 	@Id
-	@GeneratedValue
-	Long id;
+	String id;
 	@NotNull
 	String rut;
 	@NotNull
 	String name;
 	@NotNull
+	@Email(message="Invalid email format")
 	String mail;
 	@NotNull
 	String phone;
@@ -34,7 +39,7 @@ public class User implements Serializable{
 	public User() {
 		super();
 	}
-	public User(Long id, String rut, String name, String mail, String phone, String password, String country,
+	public User(String id, String rut, String name, String mail, String phone, String password, String country,
 			String address, boolean status) {
 		super();
 		this.id = id;
@@ -48,11 +53,11 @@ public class User implements Serializable{
 		this.status = status;
 	}
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

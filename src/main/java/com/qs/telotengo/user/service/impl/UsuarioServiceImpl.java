@@ -25,7 +25,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 	
 	private static final Logger LOGGER = Logger.getLogger( UsuarioServiceImpl.class.getName() );
 	
-	
 	@Autowired
 	private UsuarioRepository dao;
 
@@ -34,12 +33,9 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public UserResponse saveUsuario(UserRequest usuarioRequest) throws ValidationExceptions {
-		if (Objects.isNull(usuarioRequest.getId())) {
-			usuarioRequest.setId(-1L);
-		}
 		Optional<User> userExist = dao.findByIdAndStatusIsTrue(usuarioRequest.getId());
 		User usuario;
-		if (usuarioRequest.getId() == -1L && !userExist.isPresent()){
+		if (Objects.isNull(usuarioRequest.getId()) && !userExist.isPresent()){
 			usuario = saveUserAndVerifyExistsRut(buildEntity(usuarioRequest));
 		}else{
 			usuario = updateUser(userExist,usuarioRequest);
@@ -55,6 +51,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		if (!existsByRut(user.getRut())) {
 			user.setStatus(true);
 			user = dao.save(user);
+			LOGGER.info("Guardando usuario "+ user);
 		} else {
 			throw new ValidationExceptions("0107","No se puede agregar, Existe una cuenta de usuario actualmente para este rut, Rut: "+
 					user.getRut(),HttpStatus.OK);
@@ -70,11 +67,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 			throw new ValidationExceptions("0108","No se puede modificar, No existe una cuenta de usuario para este id, Id: "+
 					userRequest.getId(),HttpStatus.OK);
 		}
+		LOGGER.info("modificando usuario "+ userExist.get());
 		return dao.save(userExist.get());
 	}
 
 	@Override
-	public UserResponse getUsuario(Long id) throws ValidationExceptions {
+	public UserResponse getUsuario(String id) throws ValidationExceptions {
 		Optional<User> user = dao.findByIdAndStatusIsTrue(id);
 		LOGGER.info("Message: "+user.toString());
 
@@ -102,7 +100,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public UserResponse deleteUsuario(Long id) throws ValidationExceptions {
+	public UserResponse deleteUsuario(String id) throws ValidationExceptions {
 		Optional<User> userDel = dao.findByIdAndStatusIsTrue(id);
 		if (!userDel.isPresent()) {
 			throw new ValidationExceptions("0101", "No existe usuario con este id: " + id, HttpStatus.OK);
@@ -112,6 +110,7 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return buildResponse(dao.save(usuario));
 	}
 
+	//UTILL Build DTO
 	public UserResponse buildResponse(User usuario) {
 		try {
 			return mapper.map(usuario, UserResponse.class);
@@ -146,5 +145,6 @@ public class UsuarioServiceImpl implements UsuarioService {
 		}).collect(Collectors.toList());
 		return asDto;
 	}
+
 
 }

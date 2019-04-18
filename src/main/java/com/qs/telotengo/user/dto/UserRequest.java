@@ -1,15 +1,17 @@
 package com.qs.telotengo.user.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
-
 public class UserRequest {
-	Long id;
-	@NotNull
+
+	String id;
+	@NotNull(message="El rut no puede ser nulo")
 	String rut;
 	@NotNull
 	String name;
 	@NotNull
+	@Email
 	String mail;
 	@NotNull
 	String phone;
@@ -20,11 +22,11 @@ public class UserRequest {
 	boolean status;
 
 
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
