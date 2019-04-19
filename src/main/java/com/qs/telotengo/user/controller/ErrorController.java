@@ -28,18 +28,9 @@ public class ErrorController {
 	}
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-//	public HttpEntity<ErrorDto>  handleValidationExceptions(
-//	  MethodArgumentNotValidException ex) {
-//		ErrorDto error =new ErrorDto();
-//		error.setInternalCode("8866");
-//		error.setMessage(ex.getMessage().);
-//		
-//		return new ResponseEntity<ErrorDto>(error,HttpStatus.BAD_REQUEST);
-//	}	
 	public HttpEntity<ErrorDto> handleValidationExceptions(
 	        MethodArgumentNotValidException ex) {
 				ErrorDto error =new ErrorDto();
-				String err = ex.getBindingResult().getAllErrors().get(0).getDefaultMessage();
 				error.setMessage(ex.getBindingResult().getAllErrors().get(0).getDefaultMessage().toUpperCase());
 				error.setInternalCode("1515");
 				return new ResponseEntity<ErrorDto>(error,HttpStatus.BAD_REQUEST);
