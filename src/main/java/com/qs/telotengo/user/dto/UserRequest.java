@@ -1,7 +1,13 @@
 package com.qs.telotengo.user.dto;
 
+import java.util.List;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+
+import org.springframework.beans.factory.annotation.Value;
+
+import com.qs.telotengo.user.dao.Address;
 
 public class UserRequest {
 
@@ -13,12 +19,9 @@ public class UserRequest {
 	@NotNull
 	@Email
 	String mail;
-	@NotNull
-	String phone;
 	String password;
-	String country;
-	@NotNull
-	String address;
+	List<Address> addresses;
+	@Value("true")
 	boolean status;
 
 
@@ -54,30 +57,6 @@ public class UserRequest {
 		this.mail = mail;
 	}
 
-	public String getPhone() {
-		return phone;
-	}
-
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
 	public String getPassword() {
 		return password;
 	}
@@ -96,9 +75,16 @@ public class UserRequest {
 
 	@Override
 	public String toString() {
-		return "UsuarioRequest [id=" + id + ", rut=" + rut + ", name=" + name + ", mail=" + mail + ", phone="
-				+ phone + ", password=" + password + ", country=" + country + ", address=" + address + ", status=" + status
-				+ "]";
+		return "UserRequest [id=" + id + ", rut=" + rut + ", name=" + name + ", mail=" + mail + ", password=" + password
+				+ ", addresses=" + addresses + ", status=" + status + "]";
+	}
+
+	public List<Address> getAddresses() {
+		return addresses;
+	}
+
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 }
