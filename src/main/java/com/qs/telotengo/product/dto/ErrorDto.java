@@ -1,4 +1,4 @@
-package com.qs.telotengo.user.dto;
+package com.qs.telotengo.product.dto;
 
 public class ErrorDto {
 	

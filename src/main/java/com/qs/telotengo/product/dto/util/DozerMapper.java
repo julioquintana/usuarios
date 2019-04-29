@@ -1,4 +1,4 @@
-package com.qs.telotengo.user.dto.util;
+package com.qs.telotengo.product.dto.util;
 
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
