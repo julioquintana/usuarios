@@ -1,4 +1,4 @@
-package com.qs.telotengo.user.exception;
+package com.qs.telotengo.product.exception;
 
 import org.springframework.http.HttpStatus;
 
