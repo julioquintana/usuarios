@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import com.qs.telotengo.user.dao.User;
 
 @Repository
-public interface UsuarioRepository extends MongoRepository<User, Long> {
+public interface UsuarioRepository extends MongoRepository<User, String> {
 	
 	Iterable<User> findByNameContainingIgnoreCaseAndAddressesCountryAndStatusIsTrue(String nombre, String pais);
 	Iterable<User> findByAddressesCountryAndStatusIsTrue(String pais);
