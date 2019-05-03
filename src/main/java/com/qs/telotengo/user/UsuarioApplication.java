@@ -1,14 +1,14 @@
-package com.qs.telotengo.product;
+package com.qs.telotengo.user;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProductApplication {
+public class UsuarioApplication {
 
 	public static void main(String[] args) {
 		
-		SpringApplication.run(ProductApplication.class, args);
+		SpringApplication.run(UsuarioApplication.class, args);
 	}
 
 }

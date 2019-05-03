@@ -1,4 +1,4 @@
-package com.qs.telotengo.product.controller;
+package com.qs.telotengo.user.controller;
 
 import java.util.HashMap;
 import java.util.List;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.qs.telotengo.product.dto.ErrorDto;
-import com.qs.telotengo.product.exception.ValidationExceptions;
+import com.qs.telotengo.user.dto.ErrorDto;
+import com.qs.telotengo.user.exception.ValidationExceptions;
 
 @ControllerAdvice
 public class ErrorController {
